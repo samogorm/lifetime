@@ -1,0 +1,165 @@
+:root {
+  --green: #3df992;
+  --blue: #47d4d9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 10px;
+  color: var(--black);
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #fff;
+  background-attachment: fixed;
+  letter-spacing: -1px;
+  min-height: calc(100vh);
+}
+
+.highlight {
+  color: var(--blue);
+}
+
+.app-main {
+  display: grid;
+  grid-template-columns: 25% auto;
+  grid-gap: 20px;
+  width: 100%;
+  /* grid-template-rows: auto auto; */
+}
+
+.app-column {
+    display: grid;
+}
+
+/* App Form */
+#app-form {
+  background: #f9f9f9;
+  height: 80vh;
+}
+
+.form {
+  padding: 10px 25px;
+}
+
+.form .form-group {
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.form .form-group label {
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.form .form-group .select > div {
+  font-size: 14px;
+}
+
+/* Input */
+.form-group .form-input {
+  width: 100%;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  cursor: default;
+  background-color:#ffffff;
+  border-color:#cccccc;
+  display: flex;
+  align-items: center;
+  height: 38px;
+  outline: 0 !important;
+  transition: all 100ms;
+  padding: 2px 8px;
+  font-size: 14px;
+}
+
+.form-group input:focus {
+  border: 2px solid var(--blue);
+}
+
+/* Datepicker */
+.react-datepicker-popper {
+  border-radius: 4px;
+  background-color:#ffffff;
+  border-color:#cccccc;
+}
+
+.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle, 
+.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::before {
+  border-top-color:#cccccc;
+}
+
+.react-datepicker__current-month {
+  font-size: 14px;
+}
+
+.react-datepicker__day-name, 
+.react-datepicker__day, 
+.react-datepicker__time-name {
+  font-size: 14px;
+  width: 3.5rem;
+  line-height: 3.5rem;
+}
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__day--selected:hover, 
+.react-datepicker__day--in-selecting-range:hover, 
+.react-datepicker__day--in-range:hover, 
+.react-datepicker__month-text--selected:hover, 
+.react-datepicker__month-text--in-selecting-range:hover, 
+.react-datepicker__month-text--in-range:hover, 
+.react-datepicker__quarter-text--selected:hover, 
+.react-datepicker__quarter-text--in-selecting-range:hover, 
+.react-datepicker__quarter-text--in-range:hover {
+  background-color: var(--blue);
+}
+
+/* Button */
+.button {
+  border: none;
+  padding: 15px 25px;
+  width: 100%;
+  border-radius: 4px;
+  margin: 15px 0;
+  font-size: 16px;
+  transition: 0.5s;
+  font-weight: 900;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button--blue {
+  background: var(--blue);
+  box-shadow: 0 0 20px #47d4d92c;
+}
+
+.button--blue:hover {
+  box-shadow: 0 0 20px #47d4d97c;
+}
+
+
+/* App Data */
+#app-data {
+  padding: 0px 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+#app-data h3 {
+  font-size: 30px;
+  line-height: 30px;
+}

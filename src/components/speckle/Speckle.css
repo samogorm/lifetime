@@ -1,0 +1,10 @@
+.speckle {
+    height: 10px;
+    width: 10px;
+    background: #cccccc6e;
+    border-radius: 2px; 
+}
+
+.speckle--active {
+    background: var(--blue);
+}

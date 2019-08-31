@@ -1,0 +1,27 @@
+.app-header {
+    background: url('../../assets/images/topography.svg'), linear-gradient(110deg, #47d4d9, #3df992);
+    background-size: 340px, auto;
+    min-height: 20vh;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 5px 0px;
+    position: relative;
+    z-index: 1;
+}
+
+.app-header h1 {
+    font-size: 50px;
+    line-height: 45px;
+    margin: 5px 0;
+    font-weight: 900;
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
+}
+
+.app-header p {
+    font-size: 22px;
+    text-align: center;
+}
