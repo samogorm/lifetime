@@ -128,8 +128,7 @@ class App extends Component {
   }
 
   _showLife = () => {
-    let total = this.state.lifeExpectancy;
-    if(this.state.metric.value !== 'years') total = this._calculateSpeckles();
+    let total = this._calculateSpeckles();
 
     this.setState({ total: total, label: this.state.metric.value });
   }
@@ -147,7 +146,8 @@ class App extends Component {
         this.setState({inactiveTotal: this.state.age * 52 });
         break;
       default:
-        calculation = originalValue * 365;
+        calculation = originalValue;
+        this.setState({ inactiveTotal: this.state.age });
         break
     }
 
