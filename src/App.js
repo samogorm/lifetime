@@ -107,7 +107,7 @@ class App extends Component {
   }
 
   _handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value })
+    this.setState({ lifeExpectancy: event.target.value })
   }
 
   _handleSelectChange = value => {

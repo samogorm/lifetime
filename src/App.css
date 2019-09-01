@@ -29,11 +29,17 @@ body {
 }
 
 .app-main {
-  display: grid;
-  grid-template-columns: 25% auto;
-  grid-gap: 20px;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  /* grid-template-rows: auto auto; */
+}
+
+@media screen and (min-width: 1080px) {
+  .app-main {
+    display: grid;
+    grid-template-columns: 25% auto;
+    grid-gap: 20px;
+  }
 }
 
 .app-column {
@@ -43,7 +49,12 @@ body {
 /* App Form */
 #app-form {
   background: #f9f9f9;
-  height: 80vh;
+}
+
+@media screen and (min-width: 1080px) {
+  #app-form {
+    height: 80vh;
+  }
 }
 
 .form {
@@ -162,4 +173,11 @@ body {
 #app-data h3 {
   font-size: 30px;
   line-height: 30px;
+}
+
+/* Tooltip */
+
+.tooltip {
+  font-size: 14px;
+  padding: 0 5px;
 }
