@@ -1,5 +1,5 @@
 .app-header {
-    background: url('../../assets/images/topography.svg'), linear-gradient(110deg, #47d4d9, #3df992);
+    background: url('../../assets/images/topography.svg'), linear-gradient(110deg, var(--blue), var(--green));
     background-size: 340px, auto;
     min-height: 20vh;
     background-attachment: fixed;

@@ -23,14 +23,14 @@ class App extends Component {
       metric: { value: "years", label: "Years" },
       lifeExpectancy: 80,
       age: null,
-      inactiveTotal: null,
+      activeTotal: null,
       total: null,
       label: 'years'
     }
   }
 
   componentWillMount() {
-    this._setStartingAge();
+    this._setStartingValues();
   }
 
   render() {
@@ -56,6 +56,7 @@ class App extends Component {
                   showMonthDropdown
                   showYearDropdown
                   dropdownMode="select"
+                  name="dateOfBirth"
                 />
               </div>
 
@@ -64,6 +65,7 @@ class App extends Component {
                 <label>Metric</label>
                 <Select
                   className="select select-metric"
+                  name="metric"
                   value={metric}
                   onChange={this._handleSelectChange}
                   options={metricOptions}
@@ -83,8 +85,9 @@ class App extends Component {
                 <label>Life Expectancy</label>
                 <input
                   value={lifeExpectancy}
-                  onChange={(event) => this._handleChange(event)}
+                  onChange={(event) => this._handleInputChange(event)}
                   className="form-input"
+                  name="lifeExpectancy"
                   type="number"
                 />
               </div>
@@ -102,27 +105,30 @@ class App extends Component {
     );
   }
 
-  _setStartingAge = () => {
+  /**
+   * Sets some starting values in the component state.
+   */
+  _setStartingValues = () => {
     let today = new Date();
     let age = today.getFullYear() - this.state.dateOfBirth.getFullYear();
 
-    this.setState({age: age, inactiveTotal: age, total: this.state.lifeExpectancy});
+    this.setState({age: age, activeTotal: age, total: this.state.lifeExpectancy});
   }
 
-  _handleChange = event => {
-    this.setState({ lifeExpectancy: event.target.value })
-  }
+  /** Handle regular input change. */
+  _handleInputChange = event => this.setState({ [event.target.name]: event.target.value });
 
-  _handleSelectChange = value => {
-    this.setState({ metric: value });
-  }
+  /** Handle select change. */
+  _handleSelectChange = value => this.setState({ metric: value });
+  
+  /** Handle datepicker change. */
+  _handleDateChange = date => this.setState({ dateOfBirth: date });
 
-  _handleDateChange = date => {
-    this.setState({
-      dateOfBirth: date
-    });
-  };
-
+  /**
+   * Calculate the number of speckles we need to display.
+   * 
+   * @return {Number} total the total number of speckles.
+   */
   _calculateSpeckles = () => {
     let {metric, lifeExpectancy} = this.state;
     let total = this._calculateTotal(metric.value, lifeExpectancy);
@@ -130,39 +136,52 @@ class App extends Component {
     return total;
   }
 
+  /**
+   * This will update the states and show the new life.
+   */
   _showLife = () => {
     let total = this._calculateSpeckles();
 
     this.setState({ total: total, label: this.state.metric.value });
   }
 
+  /**
+   * This will calculate the totals for inactive and active speckles.
+   */
   _calculateTotal = (metric, originalValue) => {
-    let calculation = null;
+    let unit = null;
 
     switch (metric) {
       case 'months':
-        calculation = originalValue * 12;
-        this.setState({inactiveTotal: this.state.age * 12});
+        unit = 12;
         break;
       case 'weeks':
-        calculation = originalValue * 52;
-        this.setState({inactiveTotal: this.state.age * 52 });
+        unit = 52;
         break;
       default:
-        calculation = originalValue;
-        this.setState({ inactiveTotal: this.state.age });
+        unit = 1;
         break
     }
 
-    return calculation;
+    this._setNumberOfActiveSpeckles(this.state.age, unit);
+
+    return originalValue * unit;
   }
 
+  /**
+   * Set the number of speckles that should be active.
+   */
+  _setNumberOfActiveSpeckles = (acc, value) => this.setState({activeTotal: acc * value});
+
+  /**
+   * This will display the speckle grid component if the state total is not null.
+   */
   _displayGrid = () => {
     if(this.state.total !== null) {
       return (
         <SpeckleGrid
           total={this.state.total}
-          age={this.state.inactiveTotal}
+          age={this.state.activeTotal}
         />
       )
     }
