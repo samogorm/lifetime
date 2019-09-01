@@ -24,6 +24,20 @@ body {
   min-height: calc(100vh);
 }
 
+.author {
+  width: 100%;
+  text-align: center;
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.small-title {
+    font-size: 14px;
+}
+
 .highlight {
   color: var(--blue);
 }

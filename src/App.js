@@ -94,6 +94,10 @@ class App extends Component {
 
               <button type="button" className="button button--blue" onClick={this._showLife}>Show me!</button>
 
+             <div className="author">
+                <span className="small-title">A small web app by <a href="https://github.com/samogorm">Samantha O'Gorman</a></span>
+             </div>
+
             </form>
           </div>
           <div id="app-data" className="app-column">
