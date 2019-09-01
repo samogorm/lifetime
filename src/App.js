@@ -53,6 +53,9 @@ class App extends Component {
                   selected={dateOfBirth}
                   onChange={this._handleDateChange}
                   className="form-input"
+                  showMonthDropdown
+                  showYearDropdown
+                  dropdownMode="select"
                 />
               </div>
 

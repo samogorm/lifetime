@@ -47,16 +47,6 @@ body {
 }
 
 /* App Form */
-#app-form {
-  background: #f9f9f9;
-}
-
-@media screen and (min-width: 1080px) {
-  #app-form {
-    height: 80vh;
-  }
-}
-
 .form {
   padding: 10px 25px;
 }
